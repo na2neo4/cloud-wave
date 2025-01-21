@@ -1,0 +1,32 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::985539801372:role/lab-edu-role-ec2"
+                ]
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::lab-edu-bucket-image-985539801372",
+                "arn:aws:s3:::lab-edu-bucket-image-985539801372/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::lab-edu-bucket-image-985539801372",
+                "arn:aws:s3:::lab-edu-bucket-image-985539801372/*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:sourceVpce": "vpce-07234faf7b14ba67f"
+                }
+            }
+        }
+    ]
+}
